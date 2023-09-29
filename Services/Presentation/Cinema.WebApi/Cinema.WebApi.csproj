@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Azure" Version="1.6.3" />
+		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Core\Cinema.Core\Cinema.Core.csproj" />
+	  <ProjectReference Include="..\..\Business\Cinema.Service.Implementation\Cinema.Service.Implementation.csproj" />
+	</ItemGroup>
+</Project>

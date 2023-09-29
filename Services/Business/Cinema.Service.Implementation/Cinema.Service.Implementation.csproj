@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <Folder Include="Profiles\" />
+  </ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Core\Cinema.DataContracts\Cinema.DataContracts.csproj" />
+	  <ProjectReference Include="..\..\DataAccess\Cinema.DataBase.Implementation\Cinema.DataBase.Implementation.csproj" />
+	  <ProjectReference Include="..\Cinema.Service.Contracts\Cinema.Service.Contracts.csproj" />
+	</ItemGroup>
+
+</Project>
