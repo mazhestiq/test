@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cinema.DataAccess.Services.Base
 {
-    public abstract class BaseRepository<TEntity, TDbContext> where TEntity : class,IEntity where TDbContext : DbContext
+    public abstract class BaseRepository<TEntity, TDbContext> where TEntity : class, IEntity where TDbContext : DbContext
     {
         protected DataContracts.Contracts.IDbContextFactory<TDbContext> DbContextFactory;
 

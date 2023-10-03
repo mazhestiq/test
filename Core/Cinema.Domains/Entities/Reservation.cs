@@ -13,6 +13,8 @@ public class Reservation : AuditEntity
     public Guid ContactId { get; set; }
     public Contact Contact { get; set; }
 
+    public decimal Price { get; set; }
+
     public bool IsConfirmed { get; set; }
     public DateTime? ConfirmedAt { get; set; } 
 }

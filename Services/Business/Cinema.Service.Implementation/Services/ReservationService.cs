@@ -13,20 +13,20 @@ namespace Cinema.Service.Implementation.Services;
 
 public class ReservationService : BaseCrudService<Reservation, IReservationRepository, CinemaDbContext>, IReservationService
 {
-    private readonly IShowTimeRepository _showTimeRepository;
+    private readonly IShowTimeSeatRepository _showTimeSeatRepository;
     private readonly ReservationSettings _reservationSettings;
 
-    public ReservationService(IUnitOfWorkFactory<CinemaDbContext> unitOfWorkFactory, IReservationRepository repository, ReservationSettings reservationSettings, IShowTimeRepository showTimeRepository) : base(unitOfWorkFactory, repository)
+    public ReservationService(IUnitOfWorkFactory<CinemaDbContext> unitOfWorkFactory, IReservationRepository repository, ReservationSettings reservationSettings, IShowTimeSeatRepository showTimeSeatRepository) : base(unitOfWorkFactory, repository)
     {
         _reservationSettings = reservationSettings;
-        _showTimeRepository = showTimeRepository;
+        _showTimeSeatRepository = showTimeSeatRepository;
     }
 
     public override async Task<Reservation> CreateAsync(Reservation newReservation)
     {
-        var showTime = await _showTimeRepository.GetAsync(newReservation.ShowTimeId, t => t.Seats);
+        var showTimeSeat = _showTimeSeatRepository.QueryAsync(t => t.ShowTimeId == newReservation.ShowTimeId && t.SeatId == newReservation.SeatId).FirstOrDefault();
 
-        if (showTime.Seats.All(t => t.SeatId != newReservation.SeatId))
+        if (showTimeSeat == null)
             throw new ArgumentException($"Seat {newReservation.SeatId} not present in showtime.");
 
         var occupiedSeat = await QueryAsync(t =>
@@ -36,6 +36,8 @@ public class ReservationService : BaseCrudService<Reservation, IReservationRepos
 
         if (occupiedSeat.FirstOrDefault() != null)
             throw new AlreadyExistsException($"Seat {newReservation.SeatId} already booked.");
+
+        newReservation.Price = showTimeSeat.Price;
         
         return await base.CreateAsync(newReservation);
     }

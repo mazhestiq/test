@@ -122,7 +122,14 @@ public class IntegrationTests : IClassFixture<ServerFixture>
         {
             ShowTimeAt = new DateTime(2030, 10, 15, 10, 0, 0),
             MovieId = movie.Id,
-            SeatIds = new [] { seat.Id },
+            Seats = new ShowTimeSeatModel[]
+            {
+                new()
+                {
+                    SeatId = seat.Id,
+                    Price = 100
+                }
+            },
             TheaterId = theater.Id
         };
 

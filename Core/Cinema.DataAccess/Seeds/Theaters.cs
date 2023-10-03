@@ -61,11 +61,13 @@ public static class ShowTimes
                 {
                     new()
                     {
-                        SeatId = new Guid("0d609517-72c3-4bc1-90dc-acbfbd395311")
+                        SeatId = new Guid("0d609517-72c3-4bc1-90dc-acbfbd395311"),
+                        Price = 100
                     },
                     new()
                     {
-                        SeatId = new Guid("69afb28b-196f-4546-8668-db6b191e963f")
+                        SeatId = new Guid("69afb28b-196f-4546-8668-db6b191e963f"),
+                        Price = 150
                     }
                 }
             }

@@ -10,8 +10,9 @@ public class ShowTimeProfile : Profile
     {
         CreateMap<ShowTime, ShowTimeView>();
 
-        CreateMap<CreateShowTime, ShowTime>()
-            .ForMember(src => src.Seats, dest => dest.MapFrom(t => t.SeatIds.Select(x=> new ShowTimeSeat { SeatId =  x}).ToArray()));
+        CreateMap<CreateShowTime, ShowTime>();
+
+        CreateMap<ShowTimeSeatModel, ShowTimeSeat>();
 
         CreateMap<ShowTimeSeat, SeatView>()
             .ForMember(src => src.Id, dest => dest.MapFrom(t => t.Seat.Id))

@@ -10,7 +10,7 @@ namespace Cinema.Domains.Models.ShowTimes
 
         public DateTime ShowTimeAt { get; set; }
 
-        public Guid[] SeatIds { get; set; }
+        public ShowTimeSeatModel[] Seats { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

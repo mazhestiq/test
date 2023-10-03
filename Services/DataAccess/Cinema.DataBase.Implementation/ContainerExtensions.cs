@@ -14,7 +14,7 @@ namespace Cinema.DataBase.Implementation
             service.AddScoped<IReservationRepository, ReservationRepository>();
             service.AddScoped<ISeatRepository, SeatRepository>();
             service.AddScoped<ITheaterRepository, TheaterRepository>();
-
+            service.AddScoped<IShowTimeSeatRepository, ShowTimeSeatRepository>();
 
             return service;
         }
